@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <!-- cdn -->
+    <script crossorigin src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.development.js"></script>
+    <script crossorigin src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.development.js"></script>
+    <!-- react code -->
+    <script>
+        // const rootNode = document.querySelector('#root');
+        // const hOneNode = document.createElement('h1');
+        // hOneNode.innerHTML = "Hello World!!";
+        // rootNode.appendChild(hOneNode);
+
+        // create dom node || react element
+        const headingNode = React.createElement("h1", {}, "Hello from react");
+        console.log(headingNode);
+
+        // render
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+
+        root.render(headingNode);
+        console.log(root);
+    </script>
+</body>
+
+</html>
