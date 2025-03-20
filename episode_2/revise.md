@@ -50,3 +50,5 @@
 
 13. how to make project compatible for older version as well?
 - browsers list - a npm package,
+
+14. does npm run start & npm start are same?

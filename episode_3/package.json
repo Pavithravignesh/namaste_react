@@ -1,24 +1,18 @@
 {
-  "name": "ep2-igniting_app",
+  "name": "episode_3",
   "version": "1.0.0",
-  "description": "let's igniting the app",
+  "description": "",
   "scripts": {
     "ayya": "parcel index.html",
     "devar": "parcel build index.html",
     "test": "jest"
   },
-  "keywords": [
-    "ignit",
-    "ep2"
-  ],
-  "author": "pvs02799",
+  "author": "",
   "license": "ISC",
   "devDependencies": {
-    "parcel": "^2.13.3",
-    "process": "^0.11.10"
+    "parcel": "^2.14.1"
   },
   "dependencies": {
-    "browserslist": "^4.24.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   }
