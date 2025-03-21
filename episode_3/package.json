@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "ayya": "parcel index.html",
-    "devar": "parcel build index.html",
+    "devar": "parcel build index.html", 
     "test": "jest"
   },
   "author": "",
