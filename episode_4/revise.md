@@ -12,6 +12,10 @@
 
 3. how does the passing of props occurs in react?
 
-- 1. we can pass as many as props,
-  2. those all will be wrapped into a js object, and forms as a single obj,
-  3. can be destructured at the component as usual!
+- we can pass as many as props,
+- those all will be wrapped into a js object, and forms as a single obj,
+- can be destructured at the component as usual!
+
+4. what is "config driven ui"?
+- regionally or under some constrain UI can be altered as it'll be different for one place to another,
+- backend control can be do this!  

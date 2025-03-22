@@ -1,4 +1,4 @@
-const Card = ({ srcImg, restaName, foodName, star }) => {
+export const Card = ({ srcImg, restaName, foodName, star }) => {
   return (
     <>
       {" "}
@@ -17,5 +17,3 @@ const Card = ({ srcImg, restaName, foodName, star }) => {
     </>
   );
 };
-
-export default Card;
