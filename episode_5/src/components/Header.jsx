@@ -1,9 +1,9 @@
-export const Header = ({ logoImg }) => {
+export const Header = ({ LOGO_URL }) => {
   return (
     <>
       <div className="header">
         <div className="logo-container">
-          <img className="logo-img" src={logoImg} />
+          <img className="logo-img" src={LOGO_URL} />
         </div>
         <div className="nav-items">
           <ul>
