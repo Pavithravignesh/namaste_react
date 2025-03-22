@@ -12,8 +12,8 @@ const foodAPI = [
     id: 2,
     srcImg:
       "https://media.istockphoto.com/id/1127522349/photo/indian-food-chicken-biryani-curry-butter-chicken-palak-paneer-papad-dal-and-naan-bread-on.jpg?s=1024x1024&w=is&k=20&c=nemXBtyJPVUsmim0hrhFx6FJjAcIVGZ38iuojmlvUVU=",
-    restaName: "Asifi briyani",
-    foodName: "briyani",
+    restaName: "Annapoora",
+    foodName: "sambar idly",
     star: "⭐⭐⭐",
   },
 
@@ -21,8 +21,8 @@ const foodAPI = [
     id: 3,
     srcImg:
       "https://images.pexels.com/photos/2474658/pexels-photo-2474658.jpeg?auto=compress&cs=tinysrgb&w=600",
-    restaName: "Asifi briyani",
-    foodName: "briyani",
+    restaName: "HMR",
+    foodName: "beef dawa",
     star: "⭐⭐⭐⭐⭐",
   },
 
@@ -30,7 +30,7 @@ const foodAPI = [
     id: 4,
     srcImg:
       "https://images.pexels.com/photos/2679501/pexels-photo-2679501.jpeg?auto=compress&cs=tinysrgb&w=600",
-    restaName: "Asifi briyani",
+    restaName: "cheap and best",
     foodName: "briyani",
     star: "⭐⭐",
   },

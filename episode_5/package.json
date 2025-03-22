@@ -2,6 +2,7 @@
   "name": "episode_5",
   "version": "1.0.0",
   "description": "",
+  "source": "src/index.html",
   "scripts": {
     "ayya": "parcel index.html",
     "devar": "parcel build index.html",
@@ -10,10 +11,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@parcel/transformer-react-refresh-wrap": "^2.14.1",
     "parcel": "^2.14.1"
   },
   "dependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }

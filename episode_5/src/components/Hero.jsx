@@ -1,7 +1,11 @@
+import React from "react";
+import { useState } from "react";
 import { Card } from ".";
 
 export const Hero = ({ foodAPI }) => {
-  let updatedFoodAPI = foodAPI;
+  let updatedFoodAPI = foodAPI; // it's an normal js variable(state variable), which require developer to do the shallow and deep copy,
+
+  const [state, setState] = useState(foodAPI);
 
   return (
     <>
@@ -15,7 +19,10 @@ export const Hero = ({ foodAPI }) => {
             <button
               className="filter-btn"
               onClick={() => {
-                updatedFoodAPI = updatedFoodAPI.filter((e) => e.star.length > 4);
+                // updatedFoodAPI = updatedFoodAPI.filter(
+                //   (e) => e.star.length > 4
+                // );
+                setState(updatedFoodAPI.filter((e) => e.star.length >= 4));
                 console.log(updatedFoodAPI);
               }}
               onMouseOver={() => console.log("onMouseOver")}
@@ -25,7 +32,7 @@ export const Hero = ({ foodAPI }) => {
           </div>
         </div>
         <div className="hero-section-card">
-          {foodAPI.map((e) => (
+          {state.map((e) => (
             <div key={e?.id}>
               <Card
                 srcImg={e?.srcImg}
