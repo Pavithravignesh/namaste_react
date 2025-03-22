@@ -10,14 +10,13 @@ export const Hero = ({ foodAPI }) => {
         </div>
         <div className="hero-section-card">
           {foodAPI.map((e) => (
-            <div key={e.id}>
-              {console.log(e)}
+            <div key={e?.id}>
               <Card
-                srcImg={e.srcImg}
-                restaName={e.restaName}
-                foodName={e.foodName}
-                star={e.star}
-              />{" "}
+                srcImg={e?.srcImg}
+                restaName={e?.restaName}
+                foodName={e?.foodName}
+                star={e?.star}
+              />
             </div>
           ))}
         </div>
