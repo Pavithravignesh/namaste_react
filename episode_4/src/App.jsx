@@ -1,4 +1,6 @@
-import { Header, Footer, Hero } from "./components"; /* 
+import { Header, Footer, Hero } from "./components/index";
+
+/* 
 - Header;
     -> logo
     -> btn for home, carceer, contact, and about
