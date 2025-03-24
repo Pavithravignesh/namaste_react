@@ -26,3 +26,9 @@
 - give 
 
 ## whenever state variable change react will re-render the page!
+
+7. what is diff-algorithm?
+- this algorithm finds diffference between newly updated version virtual DOM with previously available virtual DOM, 
+
+8. what is reconcillation algorithm AKA react fibre?
+- updates, only newly updated portion which diff -algorithm fins as new from the previous version of the whole virtual DOM object, then actual DOM in the borwser will be get updated. 

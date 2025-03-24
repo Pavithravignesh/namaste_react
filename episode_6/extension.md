@@ -1,0 +1,1 @@
+allow CORS -> this bypass the error which CORS policy creates in the project while accessing the external API 
