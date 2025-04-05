@@ -1,4 +1,7 @@
+import { useState } from "react";
+
 export const Header = ({ LOGO_URL }) => {
+  const [btnText, setBtnText] = useState(false);
   return (
     <>
       <div className="header">
@@ -12,6 +15,11 @@ export const Header = ({ LOGO_URL }) => {
             <li>About</li>
             <li>Contact</li>
           </ul>
+          <div className="log-btn">
+            <button type="button" onClick={() => setBtnText((prev) => !prev)}>
+              {btnText ? "login" : "logout"}
+            </button>
+          </div>
         </div>
       </div>
     </>

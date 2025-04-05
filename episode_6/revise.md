@@ -29,3 +29,5 @@
 
 8. what is condition render?
 - redner under concern of some condition, then it's condition rendering!
+
+9. difference between local variable and state variable?
