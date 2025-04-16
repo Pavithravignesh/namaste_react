@@ -6,13 +6,19 @@ import foodAPI from "../../utils/foodAPIData";
 import ShimmerUI from "./ShimmerUI";
 
 export const Hero = () => {
+
   let updatedFoodAPI = foodAPI; // it's an normal js variable(state variable), which require developer to do the shallow and deep copy,
+
   // RestaMockData;
   const [state, setState] = useState([]);
+  const [filtered, setFiltered] = useState([]);
+  const [ipValue, setIpValue] = useState("");
+
 
   useEffect(() => {
     fetchData();
     setState(foodAPI);
+    setFiltered(foodAPI);
   }, []);
 
   //   fetchData(); // this will surely get you error!
@@ -36,6 +42,12 @@ export const Hero = () => {
     }
   };
 
+  function findSearch() {
+    // console.log("findSearch()");
+    // setState(foodAPI);
+    setFiltered(updatedFoodAPI.filter((e) => e.restaName.toLowerCase().includes(ipValue.toLowerCase())));
+  }
+
   // condition render
   return state.length === 0 ? (
     <>
@@ -50,8 +62,16 @@ export const Hero = () => {
       <div className="hero-section">
         <div className="hero-section-top">
           <div className="search-section">
-            <input type="search" placeholder="Start searching food..." />
-            <button className="search-btn">Search</button>
+            <input
+              type="search"
+              placeholder="Start searching food..."
+              value={ipValue}
+              onChange={(e) => setIpValue(e.target.value)}
+            />
+            <button
+              className="search-btn"
+              onClick={() => findSearch()}
+            >Search</button>
           </div>
           <div className="filter-section">
             <button
@@ -60,8 +80,7 @@ export const Hero = () => {
                 // updatedFoodAPI = updatedFoodAPI.filter(
                 //   (e) => e.star.length > 4
                 // );
-                setState(updatedFoodAPI.filter((e) => e.star.length >= 4));
-                console.log(updatedFoodAPI);
+                setFiltered(updatedFoodAPI.filter((e) => e.star.length >= 4));
               }}
               onMouseOver={() => console.log("onMouseOver")}
             >
@@ -70,7 +89,7 @@ export const Hero = () => {
           </div>
         </div>
         <div className="hero-section-card">
-          {state.map((e) => (
+          {filtered.map((e) => (
             <div key={e?.id}>
               <Card
                 srcImg={e?.srcImg}
