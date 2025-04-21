@@ -31,3 +31,15 @@
 - redner under concern of some condition, then it's condition rendering!
 
 9. difference between local variable and state variable?
+
+10. useRouterError()?
+
+10. alternative to <a></a> tag, is link from react-router-dom
+
+11. what is single page application?
+
+12. how many types of routering in web apps?
+    - client side routering - just a isngle page, only the components gets interchanges,
+    - server side routering - ,
+
+13. dynamic routing?
