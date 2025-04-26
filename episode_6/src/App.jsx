@@ -6,7 +6,7 @@ import { Header, Footer, Hero } from "./components/index";
 import { createBrowserRouter } from "react-router-dom";
 import About from "./components/About";
 import Contact from "./components/Contact";
-import ErrorConponent from "./ErrorComponent";
+import ErrorConponent from "./components/ErrorComponent";
 import { Hero } from "./components";
 import Career from "./components/Career";
 import RestaMenu from "./components/RestaMenu";

@@ -43,3 +43,6 @@
     - server side routering - ,
 
 13. dynamic routing?
+
+14. what does useParam() do?
+- gets the id from the URL, of the element which you've clicked having,

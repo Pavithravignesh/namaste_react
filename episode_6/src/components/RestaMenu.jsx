@@ -3,7 +3,8 @@ import { useParams } from "react-router";
 
 const RestaMenu = () => {
   const { resId } = useParams();
-
+  const something = useParams();
+  console.log(something);
   const [state, setState] = useState(null);
   const [valueOne, setValueOne] = useState([]);
   const [valueTwo, setValueTwo] = useState([]);
