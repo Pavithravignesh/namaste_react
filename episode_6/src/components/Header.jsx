@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export const Header = ({ LOGO_URL }) => {
   const [btnText, setBtnText] = useState(false);
@@ -10,10 +11,18 @@ export const Header = ({ LOGO_URL }) => {
         </div>
         <div className="nav-items">
           <ul>
-            <li>Home</li>
-            <li>Carceer</li>
-            <li>About</li>
-            <li>Contact</li>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/career">Career</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
           </ul>
           <div className="log-btn">
             <button type="button" onClick={() => setBtnText((prev) => !prev)}>

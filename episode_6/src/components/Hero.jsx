@@ -1,24 +1,27 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { Card } from ".";
+import { Card } from "./Card";
 import { RestaMockData } from "../../utils/mockData";
-import foodAPI from "../../utils/foodAPIData";
+// import foodAPI from "../../utils/foodAPIData";
 import ShimmerUI from "./ShimmerUI";
+import { Link } from "react-router-dom";
 
-export const Hero = () => {
-
+export const Hero = ({ foodAPI }) => {
   let updatedFoodAPI = foodAPI; // it's an normal js variable(state variable), which require developer to do the shallow and deep copy,
 
   // RestaMockData;
+  const [initialData, setInitialData] = useState([]);
   const [state, setState] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [ipValue, setIpValue] = useState("");
 
+  // console.log(state);
+  // console.log(filtered);
 
   useEffect(() => {
     fetchData();
-    setState(foodAPI);
-    setFiltered(foodAPI);
+    setState(initialData);
+    setFiltered(initialData);
   }, []);
 
   //   fetchData(); // this will surely get you error!
@@ -27,7 +30,7 @@ export const Hero = () => {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=11.044744394405173&lng=77.0134949684143&collection=83649&tags=layout_CCS_Biryani&sortBy=&filters=&type=rcv2&offset=0&page_type=null"
+        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=11.023645&lng=77.003261&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
       );
 
       if (!response.ok) {
@@ -35,8 +38,21 @@ export const Hero = () => {
       }
 
       const jsonData = await response.json();
-      console.log(jsonData.data.cards[0]);
-      // setState(jsonData.data.cards);
+      // console.log(jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+      setInitialData(
+        jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
+      );
+      setState(
+        jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
+      );
+      setFiltered(
+        jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
+      );
+
+      console.log("fetched successfully!!!");
     } catch (error) {
       console.log("Fetch error:", error);
     }
@@ -45,7 +61,11 @@ export const Hero = () => {
   function findSearch() {
     // console.log("findSearch()");
     // setState(foodAPI);
-    setFiltered(updatedFoodAPI.filter((e) => e.restaName.toLowerCase().includes(ipValue.toLowerCase())));
+    setFiltered(
+      updatedFoodAPI.filter((e) =>
+        e.restaName.toLowerCase().includes(ipValue.toLowerCase())
+      )
+    );
   }
 
   // condition render
@@ -68,10 +88,9 @@ export const Hero = () => {
               value={ipValue}
               onChange={(e) => setIpValue(e.target.value)}
             />
-            <button
-              className="search-btn"
-              onClick={() => findSearch()}
-            >Search</button>
+            <button className="search-btn" onClick={() => findSearch()}>
+              Search
+            </button>
           </div>
           <div className="filter-section">
             <button
@@ -90,14 +109,16 @@ export const Hero = () => {
         </div>
         <div className="hero-section-card">
           {filtered.map((e) => (
-            <div key={e?.id}>
+            <Link key={e?.info?.id} to={"/restaurants/" + e?.info?.id}>
               <Card
-                srcImg={e?.srcImg}
-                restaName={e?.restaName}
-                foodName={e?.foodName}
-                star={e?.star}
+                cloudinaryImageId={e?.info?.cloudinaryImageId}
+                restaName={e?.info?.name}
+                localtion={e?.info?.locality}
+                costForTwo={e?.info?.costForTwo}
+                avgRating={e?.info?.avgRating}
+                cuisines={e?.info?.cuisines}
               />
-            </div>
+            </Link>
           ))}
         </div>
       </div>
