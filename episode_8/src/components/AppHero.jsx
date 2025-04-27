@@ -1,63 +1,100 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import User from "./User";
 import UserClass from "./UserClass";
 import { Component } from "react";
 
 // function AppHero() {
+
+//   const [data, setData] = useState({});
+
 //   useEffect(() => {
 //     fetchData();
-//   });
+//   }, []);
 
 //   async function fetchData() {
 //     try {
-//       const response = await fetch("");
-//       const jsonData = await response.json();
-//       console.log(jsonData);
+//       const response = await fetch("https://api.github.com/users/Pavithravignesh");
 //       if (!response.ok) {
 //         throw new Error(`HTTP ERROR! Status: ${response.status}`);
 //       }
+//       const jsonData = await response.json();
+//       setData(jsonData); // 👈 directly update data here
 //     } catch (error) {
-//       console.log(erro);
+//       console.log(error);
 //     }
 //   }
 
-//   return (
+//   console.log(data);
+
+//   return data && data.login ? (
 //     <>
 //       <div>AppHero</div>
 //       <User
-//         name={"test user functional"}
-//         location={"test location functional"}
-//         contact={"test contact functional"}
+//         data={data}
 //       />
-//       <UserClass
+//       {/* <UserClass
 //         name={"test user class"}
 //         location={"test location class"}
 //         contact={"test contact class"}
-//       />
+//       /> */}
 //     </>
-//   );
+//   ) : (<><h1>Loading....</h1></>);
 // }
 
 class AppHero extends Component {
+
+
+  // 1st with default value
   constructor(props) {
     super(props);
     console.log("parent constructor");
+    // 4th local state has updated,
+    this.state = {
+      data: {}
+    }
   }
 
-  // after the component mount
-  componentDidMount() {
-    console.log("parent componentDidMount")
+  // 3rd after the component mount,
+  async componentDidMount() {
+
+    this.timer = setInterval(() => { console.log("setInterval") }, 1000)
+
+    console.log("parent componentDidMount");
+    try {
+      const response = await fetch("https://api.github.com/users/Pavithravignesh");
+      const jsonData = await response.json();
+      // 4. updating cycle starts,
+      this.setState({ data: jsonData });
+      if (!response.ok) {
+        throw new Error(`HTTP ERROR! Status: ${response.status}`);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
   }
 
+  componentDidUpdate() {
+    console.log("parent compundDidUpdate");
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
+    console.log("componentWillUnmount")
+  }
+  // 2nd render with dafault value
+  // 5th once again the render has occures, but with this time with the newly updated fetched value,
   render() {
     console.log("parent render");
 
     const { name, location, contact } = this.props;
-    return (
+    return this.state.data && this.state.data.login ? (
       <>
-        <UserClass name={name} location={location} contact={contact} />
+        <UserClass data={this.state.data} />
+        <UserClass data={this.state.data} />
       </>
-    );
+    ) : (<><h1>loading....</h1></>);
   }
+
 }
 export default AppHero;

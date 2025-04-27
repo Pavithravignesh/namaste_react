@@ -7,3 +7,34 @@
 4. life cycle of the component,
 
 5. things which all are can be or should be done at compountDidMount()
+
+6. detailed view on how react component render via it's life cycle,
+
+<!-- for evey render -->
+useEffect(()=>{},[]) 
+componentdDidMount(){}
+
+<!-- for conditional -->
+useEffect(()=>{},[conditional]);
+componentDidMount(){
+    if (conditional === conditional1){
+        <!-- logic -->
+    }
+}
+
+<!-- for more than conditional -->
+useEffect(()=>{},[conditional, conditional1]);
+componentDidMount(){
+    if (conditional === conditional || conditional1 === conditional1){
+        <!-- logic -->
+    }
+    
+}
+
+<!-- after leaving the page -->
+useEffect(()=>{
+    return ()=>{clearInterval(timer)}
+},[])
+componentWillUnmount(){
+    clearInterval(this.timer);
+}

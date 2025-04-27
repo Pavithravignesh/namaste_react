@@ -5,19 +5,18 @@
 
 import { useState } from "react";
 
-const User = ({ name, location, contact }) => {
+const User = ({ name, location, contact, data }) => {
   // declarating state variables
-  const [nameState, setNameState] = useState(name);
-  const [locationState, setLocationState] = useState(location);
-  const [contactState, setContactState] = useState(contact);
+  const [apiData, sestApiData] = useState(data);
   const [count, setCount] = useState(0);
+  // console.log(apiData);
   return (
     <>
       <div className="user-items">
-        <h1>username - {nameState}</h1>
-        <h1>location - {locationState}</h1>
-        <h1>contact - {contactState}</h1>
-        <h1>count - {count}</h1>
+        <h1>username - {data?.login}</h1>
+        <h1>created at - {data?.created_at}</h1>
+        <h1>follwing - {data?.following}</h1>
+        <h1>followrers - {data?.followrers}</h1>
       </div>
       <button onClick={() => setCount((prev) => prev + 1)}>click</button>
     </>

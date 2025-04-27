@@ -12,32 +12,31 @@ class UserClass extends React.Component {
   // props
   constructor(props) {
     super(props);
-    console.log("child constructor");
 
+    // console.log(this.props.data);
     // declarating state variables
     this.state = {
-      name: this.props.name,
-      location: this.props.location,
-      contact: this.props.contact,
       count: 0,
+      apiData: this.props.data,
     };
-    // console.log("consutrcutor");
+    console.log("child constructor " + this.state.apiData?.login);
   }
 
   componentDidMount() {
-    console.log("child componentDidMount");
+    console.log("child componentDidMount " + this.state.apiData?.login);
   }
 
   render() {
     const { name, location, contact } = this.props;
-    console.log("child render");
+    console.log("child render " + this.state.apiData?.login);
     return (
       <>
+        <img alt="there's a handsome men image was here" src={this.state.apiData.avatar_url} />
         <div className="user-items">
-          <h1>username - {this.state.name}</h1>
-          <h1>location - {this.state.location}</h1>
-          <h1>contact - {this.state.contact}</h1>
-          <h1>count - {this.state.count}</h1>
+          <h1>username - {this.state.apiData?.login}</h1>
+          <h1>created at - {this.state.apiData?.created_at}</h1>
+          <h1>follwing - {this.state.apiData?.following}</h1>
+          <h1>followrers - {this.state.apiData?.followrers}</h1>
         </div>
         <button
           onClick={() => {
