@@ -10,7 +10,7 @@
 
 6. detailed view on how react component render via it's life cycle,
 
-<!-- for evey render -->
+<!-- after the initial render -->
 useEffect(()=>{},[]) 
 componentdDidMount(){}
 

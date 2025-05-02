@@ -1,69 +1,36 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import { RESTAURTANT_MENU_DATA } from "../../utils/constants";
+import useFetchRestaMenu from "../../utils/useFetchRestatMenu";
 
 const RestaMenu = () => {
   const { resId } = useParams();
-  const something = useParams();
-  console.log(something);
-  const [state, setState] = useState(null);
-  const [valueOne, setValueOne] = useState([]);
-  const [valueTwo, setValueTwo] = useState([]);
 
-  const fetchRestatMenu = async () => {
-    try {
-      const response = await fetch(
-        "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=11.0414192&lng=77.010272&restaurantId=" +
-          resId
-      );
-      const jsonData = await response.json();
-      // console.log(jsonData?.data);
-      setState(jsonData?.data);
-      setValueOne(jsonData?.data);
-      setValueTwo(
-        jsonData?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards
-      );
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-    } catch (error) {
-      console.log("Fetch error:", error);
-    }
-  };
+  const data = useFetchRestaMenu(RESTAURTANT_MENU_DATA, resId);
 
-  useEffect(() => {
-    fetchRestatMenu();
-  }, []);
+  if (data === null) return <h1>loading...</h1>;
 
-  return valueOne.length !== 0 && valueTwo.length !== 0 ? (
+  const { areaName, locality, city, costForTwoMessage, cuisines, avgRating, sla } = data?.cards[2]?.card?.card?.info;
+
+  const { text } = data?.cards[0]?.card?.card
+
+  return (
     <>
       <div className="menu">
-        <h1>{valueOne?.cards[0]?.card?.card?.text}</h1>
+        <h1>{text}</h1>
         <h3>
-          {valueOne?.cards[2]?.card?.card?.info?.areaName},{" "}
-          {valueOne?.cards[2]?.card?.card?.info?.locality},{" "}
-          {valueOne?.cards[2]?.card?.card?.info?.city}
+          {areaName},{" "}
+          {locality},{" "}
+          {city}
         </h3>
-        <h3>{valueOne?.cards[2]?.card?.card?.info?.costForTwoMessage}</h3>
-        <h3>{valueOne?.cards[2]?.card?.card?.info?.cuisines.join(", ")}</h3>
-        <h3>{valueOne?.cards[2]?.card?.card?.info?.avgRating}</h3>
-        <h3>{valueOne?.cards[2]?.card?.card?.info?.sla.deliveryTime}</h3>
-        <h3>{valueOne?.cards[2]?.card?.card?.info?.sla.maxDeliveryTime}</h3>
-        <h3>{valueOne?.cards[2]?.card?.card?.info?.sla.minDeliveryTime}</h3>
-        <h3>
-          {valueTwo.map((e, i) => {
-            if (e?.card?.card?.title !== undefined) {
-              return (
-                <div key={i} className="">
-                  <h3>{e?.card?.card?.title}</h3>
-                </div>
-              );
-            }
-          })}
-        </h3>
+        <h3>{costForTwoMessage}</h3>
+        <h3>{cuisines.join(", ")}</h3>
+        <h3>{avgRating}</h3>
+        <h3>{sla.deliveryTime}</h3>
+        <h3>{sla.maxDeliveryTime}</h3>
+        <h3>{sla.minDeliveryTime}</h3>
       </div>
     </>
-  ) : (
-    <h1>loading...</h1>
   );
 };
 

@@ -46,3 +46,26 @@
 
 14. what does useParam() do?
 - gets the id from the URL, of the element which you've clicked having,
+
+15. nested router?
+- at which component you're going to having child element, will be having <outlet/> from react-router-dom,
+- then createBrowerRouter([]) will have all the object component with their requried info,
+- RouterProvider conmponent at the reactDOM.render will be having AppRouter as paras
+
+16. single responsibility prinicple?
+17. modularity?
+
+<!-- episode 9 -->
+- let's making the code more optimized,
+
+- looks every component should have single responsibility,
+
+# as for Hero component it should be render the restaurtants
+
+- fetch the data can be a customHook,
+
+# useCustomHook();
+
+- better place for this will be tils, one hook at a file,
+- starts with use with lowercase 'u', which makes react to identify easily,
+- it should return the required fetched data,

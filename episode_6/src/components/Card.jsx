@@ -6,22 +6,6 @@ export const Card = ({
   avgRating,
   cuisines,
 }) => {
-  // console.log({ cloudinaryImageId });
-
-  // const fetchRestatMenu = async () => {
-  //   try {
-  //     const response = await fetch(
-  //       "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=11.0414192&lng=77.010272&restaurantId=67645&catalog_qa=undefined&submitAction=ENTER"
-  //     );
-  //     const jsonData = await response.json();
-  //     // console.log(jsonData);
-  //     if (!response.ok) {
-  //       throw new Error(`HTTP error! Status: ${response.status}`);
-  //     }
-  //   } catch (error) {
-  //     console.log("Fetch error:", error);
-  //   }
-  // };
 
   return (
     <>
