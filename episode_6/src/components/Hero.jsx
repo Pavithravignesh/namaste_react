@@ -4,17 +4,25 @@ import ShimmerUI from "./ShimmerUI";
 import { Link } from "react-router-dom";
 import { RESTUAURANT_CARD_DATA } from "../../utils/constants";
 import useFetchRestaMenu from "../../utils/useFetchRestatMenu";
+import { useOnlineStatus } from "../../utils/useOnlineStatus";
 
 export const Hero = ({ foodAPI }) => {
   const [initialData, setInitialData] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [ipValue, setIpValue] = useState("");
 
+  // check the network status
+  // act of turning on the internet connection make the page load as it load for the very first time,
+  const onlineStatus = useOnlineStatus();
+
+  // console.log(onlineStatus);
+
   // Fetch restaurant data using custom hook
   const data = useFetchRestaMenu(RESTUAURANT_CARD_DATA);
 
   // Extract restaurants safely
   const restaurants = data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle;
+
 
   // Load data when restaurants change
   useEffect(() => {
@@ -40,6 +48,9 @@ export const Hero = ({ foodAPI }) => {
     );
     setFiltered(filteredResults);
   }
+
+  // watchout for nternet connect
+  if (!onlineStatus) return <h1>Internet took down! by the enmies</h1>;
 
   // Show loading shimmer if restaurants haven't loaded yet
   if (!restaurants?.restaurants) return <ShimmerUI />;

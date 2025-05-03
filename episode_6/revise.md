@@ -69,3 +69,16 @@
 - better place for this will be tils, one hook at a file,
 - starts with use with lowercase 'u', which makes react to identify easily,
 - it should return the required fetched data,
+
+# whenever the component renders?
+1. useEffect with empty dependency array, won't trigger for any change of state in the component, it only render itself when at the very first render, and nothing,
+2. however in the case of two of custom hook's the useEffect tracks and response for the change in url, and change in online status, how this may happen?
+
+# chunning
+# coe splitting
+# dynamic bundling
+# on demand loading,
+# lazy loading
+
+
+lazy loading if you won't separate the import and export of component correctly!

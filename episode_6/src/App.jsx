@@ -2,14 +2,15 @@ import { Outlet } from "react-router";
 import foodAPI from "../utils/foodAPIData";
 import { LOGO_URL } from "../utils/image";
 import { Header, Footer, Hero } from "./components/index";
-
 import { createBrowserRouter } from "react-router-dom";
-import About from "./components/About";
 import Contact from "./components/Contact";
 import ErrorConponent from "./components/ErrorComponent";
 import { Hero } from "./components";
 import Career from "./components/Career";
 import RestaMenu from "./components/RestaMenu";
+import React, { lazy, Suspense } from "react";
+import { LOGO_URL } from "../utils/image";
+import ShimmerUI from "./components/ShimmerUI";
 
 /* 
 - Header;
@@ -23,6 +24,9 @@ import RestaMenu from "./components/RestaMenu";
 - Footer;
     -> usual text
 */
+
+const Grocery = lazy(() => import("./components/Grocery"));
+const About = lazy(() => import("./components/About"));
 
 export const App = () => {
   return (
@@ -54,12 +58,19 @@ export const appRouter = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <About />,
+        element: <Suspense fallback={<ShimmerUI />}><About /></Suspense>,
         errorElement: <ErrorConponent />,
       },
       {
         path: "/contact",
         element: <Contact />,
+        errorElement: <ErrorConponent />,
+      },
+      {
+        path: "/grocery",
+        element: <Suspense fallback={<ShimmerUI />}>
+          <Grocery />
+        </Suspense>,
         errorElement: <ErrorConponent />,
       },
       {
