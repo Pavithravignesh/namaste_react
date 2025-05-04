@@ -1,3 +1,4 @@
+// controlled component
 export const ItemList = ({ itemCards }) => {
     // console.log(itemCards);
 

@@ -4,8 +4,11 @@ import { RESTAURTANT_MENU_DATA } from "../../utils/constants";
 import useFetchRestaMenu from "../../utils/useFetchRestatMenu";
 import { RestaCategories } from "./RestaCategories";
 
+// uncontrolled component
 const RestaMenu = () => {
   const { resId } = useParams();
+
+  const [showIndex, setShowIndex] = useState(0);
 
   const data = useFetchRestaMenu(RESTAURTANT_MENU_DATA, resId);
 
@@ -29,19 +32,22 @@ const RestaMenu = () => {
           {locality},{" "}
           {city}
         </h3>
-        <h3>{costForTwoMessage}</h3>
-        <h3>{cuisines?.join(", ")}</h3>
-        <h3>{avgRating}</h3>
-        <h3>{sla.deliveryTime}</h3>
-        <h3>{sla.maxDeliveryTime}</h3>
-        <h3>{sla.minDeliveryTime}</h3>
+        <h3>costForTwoMessage - {costForTwoMessage}</h3>
+        <h3>cuisines - {cuisines?.join(", ")}</h3>
+        <h3>avgRating - {avgRating}</h3>
       </div>
-      {categories.map((c) => {
+      {categories.map((c, index) => {
         return (
-          <div className="" key={c?.card?.card?.id ? c?.card?.card?.id:c?.card?.card?.categoryId}>
+          <div className="" key={c?.card?.card?.id ? c?.card?.card?.id : c?.card?.card?.categoryId}>
+            {/* lifting the state up */}
+            {/* at a time only one accordion should be expanded */}
             <RestaCategories
               title={c?.card?.card?.title}
               itemCards={c?.card?.card?.itemCards}
+              showAccordion={index === showIndex ? true : false}
+              setShowIndex={setShowIndex}
+              // setShowIndex={() => setShowIndex(index)}
+              index={index}
             />
           </div>
         )

@@ -92,6 +92,12 @@ lazy loading if you won't separate the import and export of component correctly!
 # what is pure function?
 - 
 
+# what is controlled and uncontrolled component?
+- controlled - not having their own state,
+- uncontrolled - having their own state,
+
 # there are two main sort of layer in react;
 1. UI layer - jsx,
 2. data layer - state, props, 
+
+18. lifting the state up in react?
