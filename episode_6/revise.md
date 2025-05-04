@@ -92,4 +92,6 @@ lazy loading if you won't separate the import and export of component correctly!
 # what is pure function?
 - 
 
-#
+# there are two main sort of layer in react;
+1. UI layer - jsx,
+2. data layer - state, props, 

@@ -20,9 +20,9 @@ export const Hero = ({ foodAPI }) => {
 
   // Fetch restaurant data using custom hook
   const data = useFetchRestaMenu(RESTUAURANT_CARD_DATA);
-
+  // console.log(data);
   // Extract restaurants safely
-  const restaurants = data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle;
+  const restaurants = data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle;
 
 
   // Load data when restaurants change
