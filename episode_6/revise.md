@@ -82,3 +82,14 @@
 
 
 lazy loading if you won't separate the import and export of component correctly!
+
+<!-- episode 10 -->
+
+# what is higher order comoponent?
+- a component which can receive another component as a parameter, and return a component out of it,
+- since you're having a component inside a another component, you can able to pass parameter to component itself(that's why it an higher order component) and can be pass parameter to the component which being return as a output!
+
+# what is pure function?
+- 
+
+#

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card } from "./Card";
+import { Card, HigherOrderComponent } from "./Card";
 import ShimmerUI from "./ShimmerUI";
 import { Link } from "react-router-dom";
 import { RESTUAURANT_CARD_DATA } from "../../utils/constants";
@@ -11,6 +11,7 @@ export const Hero = ({ foodAPI }) => {
   const [filtered, setFiltered] = useState([]);
   const [ipValue, setIpValue] = useState("");
 
+  const IsOpenComponent = HigherOrderComponent(Card);
   // check the network status
   // act of turning on the internet connection make the page load as it load for the very first time,
   const onlineStatus = useOnlineStatus();
@@ -34,21 +35,14 @@ export const Hero = ({ foodAPI }) => {
 
   // Search handler
   function findSearch() {
-    const searchValue = ipValue.toLowerCase();
-    const filteredResults = initialData.filter((restaurant) =>
-      restaurant?.info?.name.toLowerCase().includes(searchValue)
-    );
-    setFiltered(filteredResults);
+    const searchValue = initialData.filter((e) => e?.info?.name.toLowerCase().includes(ipValue.toLowerCase()));
+    setFiltered(searchValue);
   }
-
   // Filter by rating
   function filterHighRated() {
-    const filteredResults = initialData.filter(
-      (restaurant) => restaurant?.info?.avgRating >= 4.1
-    );
-    setFiltered(filteredResults);
+    const searchValue = initialData.filter((e) => e?.info?.avgRating > 4.4);
+    setFiltered(searchValue);
   }
-
   // watchout for nternet connect
   if (!onlineStatus) return <h1>Internet took down! by the enmies</h1>;
 
@@ -80,14 +74,26 @@ export const Hero = ({ foodAPI }) => {
       <div className="hero-section-card">
         {filtered.map((restaurant) => (
           <Link key={restaurant?.info?.id} to={`/restaurants/${restaurant?.info?.id}`}>
-            <Card
+
+            {restaurant?.info?.isOpen ? <IsOpenComponent
               cloudinaryImageId={restaurant?.info?.cloudinaryImageId}
               restaName={restaurant?.info?.name}
               localtion={restaurant?.info?.locality}
               costForTwo={restaurant?.info?.costForTwo}
               avgRating={restaurant?.info?.avgRating}
               cuisines={restaurant?.info?.cuisines}
-            />
+              isOpen={restaurant?.info?.isOpen}
+            /> :
+              <Card
+                cloudinaryImageId={restaurant?.info?.cloudinaryImageId}
+                restaName={restaurant?.info?.name}
+                localtion={restaurant?.info?.locality}
+                costForTwo={restaurant?.info?.costForTwo}
+                avgRating={restaurant?.info?.avgRating}
+                cuisines={restaurant?.info?.cuisines}
+                isOpen={restaurant?.info?.isOpen}
+              />
+            }
           </Link>
         ))}
       </div>

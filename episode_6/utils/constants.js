@@ -1,2 +1,2 @@
-export const RESTUAURANT_CARD_DATA = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=11.023645&lng=77.003261&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
+export const RESTUAURANT_CARD_DATA = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&is-seo-homepage-enabled=true";
 export const RESTAURTANT_MENU_DATA = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=11.0414192&lng=77.010272&restaurantId=";

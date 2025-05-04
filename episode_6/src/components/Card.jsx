@@ -5,6 +5,7 @@ export const Card = ({
   costForTwo,
   avgRating,
   cuisines,
+  isOpen
 }) => {
 
   return (
@@ -32,10 +33,37 @@ export const Card = ({
             <h4>{avgRating}</h4>
           </div>
           <div className="card-details">
-            <h4 className="wrap-text">{cuisines.join(", ")}</h4>
+            {/* <h4 className="wrap-text">{cuisines.join(", ")}</h4> */}
           </div>
         </div>
       </div>
     </>
   );
 };
+
+export const HigherOrderComponent = (Component) => {
+  return ({
+    cloudinaryImageId,
+    restaName,
+    localtion,
+    costForTwo,
+    avgRating,
+    cuisines,
+    isOpen
+  }) => {
+    return (
+      <>
+        <label htmlFor="">open</label>
+        <Component
+          cloudinaryImageId={cloudinaryImageId}
+          restaName={restaName}
+          localtion={localtion}
+          costForTwo={costForTwo}
+          avgRating={avgRating}
+          cuisines={cuisines}
+          isOpen={isOpen}
+        />
+      </>
+    )
+  }
+}; 
