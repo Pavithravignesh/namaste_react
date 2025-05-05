@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import UserContext from "../../utils/context/userContext";
+
 export const Card = ({
   cloudinaryImageId,
   restaName,
@@ -7,6 +10,9 @@ export const Card = ({
   cuisines,
   isOpen
 }) => {
+
+  // consuming it
+  const { loginUser } = useContext(UserContext);
 
   return (
     <>
@@ -31,6 +37,9 @@ export const Card = ({
           </div>
           <div className="card-details">
             <h4>{avgRating}</h4>
+          </div>
+          <div className="card-details">
+            <h4>{loginUser}</h4>
           </div>
           <div className="card-details">
             {/* <h4 className="wrap-text">{cuisines.join(", ")}</h4> */}

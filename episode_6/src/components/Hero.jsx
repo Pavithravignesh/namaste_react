@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Card, HigherOrderComponent } from "./Card";
 import ShimmerUI from "./ShimmerUI";
 import { Link } from "react-router-dom";
 import { RESTUAURANT_CARD_DATA } from "../../utils/constants";
 import useFetchRestaMenu from "../../utils/useFetchRestatMenu";
 import { useOnlineStatus } from "../../utils/useOnlineStatus";
+import UserContext from "../../utils/context/userContext";
 
 export const Hero = ({ foodAPI }) => {
   const [initialData, setInitialData] = useState([]);
@@ -16,7 +17,9 @@ export const Hero = ({ foodAPI }) => {
   // act of turning on the internet connection make the page load as it load for the very first time,
   const onlineStatus = useOnlineStatus();
 
-  // console.log(onlineStatus);
+  // TODO: use context
+  const { loginUser, setUserName } = useContext(UserContext);
+
 
   // Fetch restaurant data using custom hook
   const data = useFetchRestaMenu(RESTUAURANT_CARD_DATA);
@@ -68,6 +71,14 @@ export const Hero = ({ foodAPI }) => {
           <button className="filter-btn" onClick={filterHighRated}>
             Filter the food
           </button>
+        </div>
+
+        <div className="serach-section">
+          <input
+            type="text"
+            // value={loginUser}
+            onChange={(e) => setUserName(e.target.value)}
+          />
         </div>
       </div>
 

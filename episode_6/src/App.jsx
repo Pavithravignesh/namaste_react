@@ -8,9 +8,10 @@ import ErrorConponent from "./components/ErrorComponent";
 import { Hero } from "./components";
 import Career from "./components/Career";
 import RestaMenu from "./components/RestaMenu";
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import { LOGO_URL } from "../utils/image";
 import ShimmerUI from "./components/ShimmerUI";
+import UserContext from "../utils/context/userContext";
 
 /* 
 - Header;
@@ -29,12 +30,29 @@ const Grocery = lazy(() => import("./components/Grocery"));
 const About = lazy(() => import("./components/About"));
 
 export const App = () => {
+
+  const [userName, setUserName] = useState("");
+
+  useEffect(() => {
+    const data = {
+      loginUser: "test user"
+    };
+    setUserName(data.loginUser);
+  }, []);
+
+  // console.log(userName);
+
   return (
     <>
       <div className="app">
-        <Header LOGO_URL={LOGO_URL} />
-        {/* <Hero foodAPI={foodAPI} /> */}
-        <Outlet />
+        {/* providing it */}
+        <UserContext.Provider value={{ loginUser: userName, setUserName }}>
+          <UserContext.Provider value={{ loginUser: "elon musk" }}>
+            <Header LOGO_URL={LOGO_URL} />
+          </UserContext.Provider>
+          {/* <Hero foodAPI={foodAPI} /> */}
+          <Outlet />
+        </UserContext.Provider>
         <Footer />
       </div>
     </>

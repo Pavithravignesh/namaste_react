@@ -1,16 +1,22 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { RESTAURTANT_MENU_DATA } from "../../utils/constants";
 import useFetchRestaMenu from "../../utils/useFetchRestatMenu";
 import { RestaCategories } from "./RestaCategories";
+import UserContext from "../../utils/context/userContext";
 
 // uncontrolled component
 const RestaMenu = () => {
   const { resId } = useParams();
 
   const [showIndex, setShowIndex] = useState(0);
+  const [toggle, setToggle] = useState(true);
+
+  const dummy = "dummy";
 
   const data = useFetchRestaMenu(RESTAURTANT_MENU_DATA, resId);
+
+  const { loginUser } = useContext(UserContext);
 
   if (data === null) return <h1>loading...</h1>;
 
@@ -22,6 +28,8 @@ const RestaMenu = () => {
 
   const { text } = data?.cards[0]?.card?.card
 
+  // console.log(toggle);
+  // console.log(dummy);
 
   return (
     <>
@@ -35,6 +43,7 @@ const RestaMenu = () => {
         <h3>costForTwoMessage - {costForTwoMessage}</h3>
         <h3>cuisines - {cuisines?.join(", ")}</h3>
         <h3>avgRating - {avgRating}</h3>
+        <h3>Username - {loginUser}</h3>
       </div>
       {categories.map((c, index) => {
         return (
@@ -44,10 +53,10 @@ const RestaMenu = () => {
             <RestaCategories
               title={c?.card?.card?.title}
               itemCards={c?.card?.card?.itemCards}
-              showAccordion={index === showIndex ? true : false}
-              setShowIndex={setShowIndex}
-              // setShowIndex={() => setShowIndex(index)}
-              index={index}
+              showAccordion={index === showIndex ? toggle : false}
+              setShowIndex={() => setShowIndex(index)}
+              setToggle={setToggle}
+              dummy={dummy}
             />
           </div>
         )

@@ -7,18 +7,20 @@ export const RestaCategories = ({
     itemCards,
     showAccordion,
     setShowIndex,
-    index
+    setToggle,
+    dummy
 }) => {
     // const [showAccordion, setShowAccordion] = useState(false);
-    // console.log(itemCards);
+    // console.log(showAccordion);
+    // console.log(dummy);
     return (
         <div
-            onClick={() => { setShowIndex(index) }}
+            onClick={() => { setShowIndex(); setToggle((prev) => !prev) }}
             style={{ cursor: "pointer" }}>
             {/* header */}
             < h2 > {title}({itemCards.length})</h2 >
             {/* body */}
-            {showAccordion && <ItemList itemCards={itemCards} />}
+            {showAccordion && <ItemList itemCards={itemCards} dummy={dummy} />}
         </div >
     )
 };

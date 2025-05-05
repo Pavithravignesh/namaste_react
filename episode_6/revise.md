@@ -101,3 +101,15 @@ lazy loading if you won't separate the import and export of component correctly!
 2. data layer - state, props, 
 
 18. lifting the state up in react?
+
+# react context
+
+1. what is props drilling,
+2. what sort data flow does react having?
+3. what does mean by top to buttom?
+4. how can we use context hook inside class based component?
+
+# ContextAPI
+1. createContext,
+2. provide it where ever you want, by using <UserContext.Provider value={{}}><UserContext.Provider>
+3. consumer either by, hook way useContext(respectiveHook); or component way <UserContext.Consumer></UserContext.Consumer>

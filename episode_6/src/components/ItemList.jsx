@@ -1,6 +1,8 @@
 // controlled component
-export const ItemList = ({ itemCards }) => {
+export const ItemList = ({ itemCards, dummy }) => {
     // console.log(itemCards);
+
+    // console.log(dummy);
 
     return (<div>
         {

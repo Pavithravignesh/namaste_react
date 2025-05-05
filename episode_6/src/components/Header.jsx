@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { useOnlineStatus } from "../../utils/useOnlineStatus";
+import UserContext from "../../utils/context/userContext";
 
 export const Header = ({ LOGO_URL }) => {
   const [btnText, setBtnText] = useState(false);
 
   const onlineStatus = useOnlineStatus();
+
+  const { loginUser } = useContext(UserContext);
 
   return (
     <>
@@ -32,6 +35,9 @@ export const Header = ({ LOGO_URL }) => {
             </li>
             <li>
               <Link to="/grocery">grocery</Link>
+            </li>
+            <li>
+              {loginUser}
             </li>
           </ul>
           <div className="log-btn">
