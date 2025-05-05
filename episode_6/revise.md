@@ -113,3 +113,6 @@ lazy loading if you won't separate the import and export of component correctly!
 1. createContext,
 2. provide it where ever you want, by using <UserContext.Provider value={{}}><UserContext.Provider>
 3. consumer either by, hook way useContext(respectiveHook); or component way <UserContext.Consumer></UserContext.Consumer>
+
+# whats the difference between Redux vs ContextAPI
+1. 
