@@ -90,7 +90,7 @@ lazy loading if you won't separate the import and export of component correctly!
 - since you're having a component inside a another component, you can able to pass parameter to component itself(that's why it an higher order component) and can be pass parameter to the component which being return as a output!
 
 # what is pure function?
-- 
+- TODO:
 
 # what is controlled and uncontrolled component?
 - controlled - not having their own state,
@@ -106,7 +106,7 @@ lazy loading if you won't separate the import and export of component correctly!
 
 1. what is props drilling,
 2. what sort data flow does react having?
-3. what does mean by top to buttom?
+3. what does mean by top to bottom?
 4. how can we use context hook inside class based component?
 
 # ContextAPI
