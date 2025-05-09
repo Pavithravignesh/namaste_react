@@ -4,6 +4,7 @@ import { RESTAURTANT_MENU_DATA } from "../../utils/constants";
 import useFetchRestaMenu from "../../utils/useFetchRestatMenu";
 import { RestaCategories } from "./RestaCategories";
 import UserContext from "../../utils/context/userContext";
+import CartBtn from "./CartBtn";
 
 // uncontrolled component
 const RestaMenu = () => {
@@ -34,7 +35,9 @@ const RestaMenu = () => {
   return (
     <>
       <div className="menu">
-        <h1>{text}</h1>
+        <div className="">
+          <h1>{text}</h1>
+        </div>
         <h3>
           {areaName},{" "}
           {locality},{" "}

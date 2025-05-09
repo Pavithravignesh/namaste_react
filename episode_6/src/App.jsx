@@ -3,7 +3,7 @@ import foodAPI from "../utils/foodAPIData";
 import { LOGO_URL } from "../utils/image";
 import { Header, Footer, Hero } from "./components/index";
 import { createBrowserRouter } from "react-router-dom";
-import Contact from "./components/Contact";
+import Cart from "./components/Cart";
 import ErrorConponent from "./components/ErrorComponent";
 import { Hero } from "./components";
 import Career from "./components/Career";
@@ -82,8 +82,8 @@ export const appRouter = createBrowserRouter([
         errorElement: <ErrorConponent />,
       },
       {
-        path: "/contact",
-        element: <Contact />,
+        path: "/cart",
+        element: <Cart />,
         errorElement: <ErrorConponent />,
       },
       {

@@ -124,6 +124,16 @@ lazy loading if you won't separate the import and export of component correctly!
 5. dispatch an action
 6.  
 
+
+# why redux?
+1. is basically orffer better ways to manage the state for the project,
+2. for complex data layer,
+3. easiler to debug, with it's chorme extension and redux dev tool,
+
+# what is react-redux and redux toolkit(RTK)?
+1. reux-toolkit standard way for writing redux logic,
+2. 
+
 # step by step approach
 1. create appStore out of configureStore({});
 2. provide it via <Provide store={apptore}></Provide> out of react-redux

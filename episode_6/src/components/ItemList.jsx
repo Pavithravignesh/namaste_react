@@ -1,16 +1,23 @@
+import { useEffect, useState } from "react";
+import CartBtn from "./CartBtn";
+
 // controlled component
 export const ItemList = ({ itemCards, dummy }) => {
-    // console.log(itemCards);
 
-    // console.log(dummy);
+    // cart related
+    // const [cartCount, setCartCount] = useState(0);
+    // const [addToggle, setAddToggle] = useState(true);
+
 
     return (<div>
         {
             itemCards.map((item) => {
                 return (
                     <div key={item?.card?.info?.id} >
-
-                        <div>{item?.card?.info?.name} </div>
+                        <div className="">
+                            <span>{item?.card?.info?.name} </span>
+                            <CartBtn />
+                        </div>
                         {item?.card?.info?.imageId ? <img
                             className="food-img"
                             src={
