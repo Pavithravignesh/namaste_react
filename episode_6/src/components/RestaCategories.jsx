@@ -14,13 +14,15 @@ export const RestaCategories = ({
     // console.log(showAccordion);
     // console.log(dummy);
     return (
-        <div
-            onClick={() => { setShowIndex(); setToggle((prev) => !prev) }}
-            style={{ cursor: "pointer" }}>
-            {/* header */}
-            < h2 > {title}({itemCards.length})</h2 >
-            {/* body */}
+        <div className="">
+            <div
+                onClick={() => { setShowIndex(); setToggle((prev) => !prev) }}
+                style={{ cursor: "pointer" }}>
+                {/* header */}
+                < h2 > {title}({itemCards.length})</h2 >
+                {/* body */}
+            </div >
             {showAccordion && <ItemList itemCards={itemCards} dummy={dummy} />}
-        </div >
+        </div>
     )
 };

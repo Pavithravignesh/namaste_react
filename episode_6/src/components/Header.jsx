@@ -31,7 +31,7 @@ export const Header = ({ LOGO_URL }) => {
               <Link to="/about">About</Link>
             </li>
             <li>
-              <Link to="/contact">Contact</Link>
+              <Link to="/cart">Cart {"headerCartCount"}</Link>
             </li>
             <li>
               <Link to="/grocery">grocery</Link>
