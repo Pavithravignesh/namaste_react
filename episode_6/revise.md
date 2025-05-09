@@ -115,6 +115,7 @@ lazy loading if you won't separate the import and export of component correctly!
 3. consumer either by, hook way useContext(respectiveHook); or component way <UserContext.Consumer></UserContext.Consumer>
 
 # whats the difference between Redux vs ContextAPI
+<<<<<<< Updated upstream
 
 # whats the difference between react-redux vs redux-toolkit
 1. install @reduxjs/toolkit and react-redux
@@ -124,6 +125,9 @@ lazy loading if you won't separate the import and export of component correctly!
 5. dispatch an action
 6.  
 
+=======
+1. 
+>>>>>>> Stashed changes
 
 # why redux?
 1. is basically orffer better ways to manage the state for the project,
@@ -132,6 +136,7 @@ lazy loading if you won't separate the import and export of component correctly!
 
 # what is react-redux and redux toolkit(RTK)?
 1. reux-toolkit standard way for writing redux logic,
+<<<<<<< Updated upstream
 2. 
 
 # step by step approach
@@ -156,3 +161,6 @@ lazy loading if you won't separate the import and export of component correctly!
 7. cart: cartReducer
 8. sibscribing to the store using selector,
 9.  useSelector((store)=>store.cart.items);
+=======
+2. 
+>>>>>>> Stashed changes
