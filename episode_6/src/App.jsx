@@ -12,6 +12,8 @@ import React, { lazy, Suspense, useEffect, useState } from "react";
 import { LOGO_URL } from "../utils/image";
 import ShimmerUI from "./components/ShimmerUI";
 import UserContext from "../utils/context/userContext";
+import { Provider } from "react-redux";
+import appStore from "../utils/appStore";
 
 /* 
 - Header;
@@ -40,20 +42,20 @@ export const App = () => {
     setUserName(data.loginUser);
   }, []);
 
-  // console.log(userName);
-
   return (
     <>
       <div className="app">
-        {/* providing it */}
-        <UserContext.Provider value={{ loginUser: userName, setUserName }}>
-          <UserContext.Provider value={{ loginUser: "elon musk" }}>
-            <Header LOGO_URL={LOGO_URL} />
+        {/* providing it like all */}
+        <Provider store={appStore}>
+          <UserContext.Provider value={{ loginUser: userName, setUserName }}>
+            <UserContext.Provider value={{ loginUser: "elon musk" }}>
+              <Header LOGO_URL={LOGO_URL} />
+            </UserContext.Provider>
+            {/* <Hero foodAPI={foodAPI} /> */}
+            <Outlet />
           </UserContext.Provider>
-          {/* <Hero foodAPI={foodAPI} /> */}
-          <Outlet />
-        </UserContext.Provider>
-        <Footer />
+          <Footer />
+        </Provider>
       </div>
     </>
   );

@@ -115,4 +115,34 @@ lazy loading if you won't separate the import and export of component correctly!
 3. consumer either by, hook way useContext(respectiveHook); or component way <UserContext.Consumer></UserContext.Consumer>
 
 # whats the difference between Redux vs ContextAPI
-1. 
+
+# whats the difference between react-redux vs redux-toolkit
+1. install @reduxjs/toolkit and react-redux
+2. build our store
+3. connect our store to our app
+4. slice (cartSlice)
+5. dispatch an action
+6.  
+
+# step by step approach
+1. create appStore out of configureStore({});
+2. provide it via <Provide store={apptore}></Provide> out of react-redux
+3. create createSlice({})
+4. which includes some configuration; 
+   1. name, 
+   2. initialState:{items:[]},
+   3. reducers:{
+            <!-- action's - communicate with redux-store -->
+            <!-- which make the communication with redux-store, like... -->
+            <!-- modifies slice -->
+            addItems:(state,action)=>{};
+            updateItems:(state,action)=>{};
+            deleteItems:(state,action)=>{};
+            clearCart:(state,action)=>{};
+            } 
+4. export default cartSlice.reducer;
+5. export const {}=cartSlice.action;
+6. add back to the appstore as {reducer:{cart: cartReducer}}; appStore's bigger reducer will have every small reducer's,
+7. cart: cartReducer
+8. sibscribing to the store using selector,
+9.  useSelector((store)=>store.cart.items);
