@@ -16,7 +16,7 @@ export const ItemList = ({ itemCards, dummy }) => {
                     <div key={item?.card?.info?.id} >
                         <div className="">
                             <span>{item?.card?.info?.name} </span>
-                            <CartBtn />
+                            <CartBtn item={item} />
                         </div>
                         {item?.card?.info?.imageId ? <img
                             className="food-img"

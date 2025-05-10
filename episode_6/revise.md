@@ -114,6 +114,7 @@ lazy loading if you won't separate the import and export of component correctly!
 2. provide it where ever you want, by using <UserContext.Provider value={{}}><UserContext.Provider>
 3. consumer either by, hook way useContext(respectiveHook); or component way <UserContext.Consumer></UserContext.Consumer>
 
+<!-- epi 12 -->
 # whats the difference between Redux vs ContextAPI
 
 # whats the difference between react-redux vs redux-toolkit
@@ -131,8 +132,6 @@ lazy loading if you won't separate the import and export of component correctly!
 
 # what is react-redux and redux toolkit(RTK)?
 1. reux-toolkit standard way for writing redux logic,
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 2. 
 
 # step by step approach
@@ -156,4 +155,17 @@ lazy loading if you won't separate the import and export of component correctly!
 6. add back to the appstore as {reducer:{cart: cartReducer}}; appStore's bigger reducer will have every small reducer's,
 7. cart: cartReducer
 8. sibscribing to the store using selector,
-9.  useSelector((store)=>store.cart.items);
+9. useSelector((store)=>store.cart.items);
+
+<!-- IMPORTANT THINGS TO NOTE -->
+1. subcribing only to that particular portion of the store, not the whole store,
+2. beening very conscious about referring reducer whether it is singular and plular,
+   1. inside appStore = configureStore({reducer: thatParticularName:thatParticular}); it's singular,
+   2. inside cartSlice = createSlice({reducers:{action:()=>{}}}), it's plular,
+   3. via exporting it, now you're exporting the a one single reducer object which having some number of action inside to it, 
+3. mutating the state in redux;
+   1. in older days in redux, you cannot be mutate the state object stragihtaway, so, you have to make a copy of it and return as it replaces the global state,
+   2. by using RTK, we can able to mutate the state, now return is not compulsory,
+   3. console.log(current(state)); //current come from redux toolkit
+   4. RTK - either you should mutate the state or return a new state,
+4. redux dev tool
