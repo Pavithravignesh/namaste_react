@@ -78,7 +78,9 @@ export const appRouter = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <Suspense fallback={<ShimmerUI />}><About /></Suspense>,
+        element: <Suspense fallback={<ShimmerUI />}>
+          <About />
+        </Suspense>,
         errorElement: <ErrorConponent />,
       },
       {

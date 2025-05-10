@@ -1,7 +1,8 @@
-import { useCallback, useContext, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useOnlineStatus } from "../../utils/useOnlineStatus";
 import UserContext from "../../utils/context/userContext";
+import { useSelector } from "react-redux";
 
 export const Header = ({ LOGO_URL }) => {
   const [btnText, setBtnText] = useState(false);
@@ -9,6 +10,10 @@ export const Header = ({ LOGO_URL }) => {
   const onlineStatus = useOnlineStatus();
 
   const { loginUser } = useContext(UserContext);
+
+  // subscribing to the store using selector
+  const cart = useSelector((store) => store.cart.items);
+  // console.log(cart);
 
   return (
     <>
@@ -31,7 +36,7 @@ export const Header = ({ LOGO_URL }) => {
               <Link to="/about">About</Link>
             </li>
             <li>
-              <Link to="/cart">Cart {"headerCartCount"}</Link>
+              <Link to="/cart">Cart - ({cart && cart.length} items)</Link>
             </li>
             <li>
               <Link to="/grocery">grocery</Link>
