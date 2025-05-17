@@ -171,3 +171,12 @@ lazy loading if you won't separate the import and export of component correctly!
 4. redux dev tool
 
 add just for test again
+
+requirement:
+
+1. Header should have two module which will be using lazy, alone with home those two
+2. home will be list all available resta,
+   1. will having search option, and as well as better rated resta as user's can mutate the rate level
+3. click of a resta, you'll be having menu page where you can add item to the cart,
+4. cart will be showcasing the count at the header, and on click of that btn get as to the page cart,
+5. where we can able to have all add to cart item as it ready to buy,
